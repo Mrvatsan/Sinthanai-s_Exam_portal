@@ -59,9 +59,23 @@ npm run dev
 
 ## Deployment
 
-- Backend: Deploy Django app to your preferred hosting (Railway, Render, etc.)
-- Frontend: Deploy Next.js app to Vercel or similar platform
-- Update API_URL in `frontend/src/app/api.ts` to production backend URL
+### Quick Deploy to Render
+
+1. Push code to GitHub
+2. Go to [Render](https://render.com) → **New** → **Blueprint**
+3. Connect repository and click **Apply**
+4. Configure environment variables:
+   - **Backend**: `ALLOWED_HOSTS`, `FRONTEND_URL`
+   - **Frontend**: `NEXT_PUBLIC_API_URL`
+5. Redeploy both services
+
+See [Quick Start Guide](docs/quick_start.md) or [Full Deployment Guide](docs/deployment_guide.md) for details.
+
+### Environment Variables
+
+- Backend uses PostgreSQL (auto-configured by Render)
+- Frontend connects via `NEXT_PUBLIC_API_URL`
+- All settings support environment-based configuration
 
 ## License
 
