@@ -6,15 +6,15 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-export const loginAdmin = async (username, password) => {
+export const loginAdmin = async (username: string, password: string) => {
   return api.post('/login/', { username, password, role: 'admin' });
 };
 
-export const loginStudent = async (username, password) => {
+export const loginStudent = async (username: string, password: string) => {
   return api.post('/login/', { username, password, role: 'student' });
 };
 
-export const uploadDataset = async (file) => {
+export const uploadDataset = async (file: File) => {
   const formData = new FormData();
   formData.append('file', file);
   return api.post('/upload/', formData, {
@@ -26,7 +26,7 @@ export const getDatasets = async () => {
   return api.get('/datasets/');
 }
 
-export const toggleDataset = async (id) => {
+export const toggleDataset = async (id: number) => {
   return api.post(`/datasets/${id}/toggle/`);
 }
 
