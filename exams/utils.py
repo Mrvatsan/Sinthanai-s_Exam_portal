@@ -11,8 +11,15 @@ def clean_and_parse_excel(file_obj):
     import xlrd
     from io import BytesIO
     
-    logging.basicConfig(filename='d:/adminstudent/debug.log', level=logging.DEBUG, 
-                       format='%(asctime)s - %(message)s')
+    # Use relative path for debug log that works on both Windows and Linux
+    log_file = os.path.join(os.path.dirname(__file__), '..', 'debug.log')
+    try:
+        logging.basicConfig(filename=log_file, level=logging.DEBUG, 
+                           format='%(asctime)s - %(message)s')
+    except:
+        # If file logging fails, just use console logging
+        logging.basicConfig(level=logging.DEBUG, 
+                           format='%(asctime)s - %(message)s')
     
     df = None
     excel_error = None
